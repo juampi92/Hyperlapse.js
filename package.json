@@ -1,0 +1,28 @@
+{
+  "name": "Hyperlapse.js",
+  "version": "1.0.0",
+  "description": "Javascript hyper-lapse utility for Google Street View",
+  "main": "src/Hyperlapse.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juampi92/Hyperlapse.js"
+  },
+  "keywords": [
+    "Hyperlapse"
+  ],
+  "author": "TeehanLax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juampi92/Hyperlapse.js/issues"
+  },
+  "homepage": "https://github.com/juampi92/Hyperlapse.js",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "jsdoc": "^3.3.2",
+    "mocha": "^2.3.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "doc": "jsdoc -c jscod.json -d docs"
+  }
+}
