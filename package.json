@@ -23,6 +23,6 @@
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "doc": "jsdoc -c jscod.json -d docs"
+    "doc": "jsdoc -c jsdoc.json -d docs"
   }
 }
