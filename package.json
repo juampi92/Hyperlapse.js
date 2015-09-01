@@ -19,10 +19,14 @@
   "devDependencies": {
     "chai": "^3.2.0",
     "jsdoc": "^3.3.2",
-    "mocha": "^2.3.0"
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.0",
+    "uglify-js": "^2.4.24"
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "doc": "jsdoc -c jsdoc.json -d docs"
+    "doc": "jsdoc -c jsdoc.json -d docs",
+    "uglify": "uglifyjs -o build/hyperlapse.min.js src/Hyperlapse.js",
+    "hint": "jshint src/Hyperlapse.js"
   }
 }

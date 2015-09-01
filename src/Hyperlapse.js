@@ -46,7 +46,7 @@ var pointOnLine = function(t, a, b) {
 var HyperlapsePoint = function(location, pano_id, params ) {
 
 	var self = this;
-	var params = params || {};
+	var prams = params || {};
 
 	/**
 	 * @type {google.maps.LatLng}
@@ -62,35 +62,35 @@ var HyperlapsePoint = function(location, pano_id, params ) {
 	 * @default 0
 	 * @type {Number}
 	 */
-	this.heading = params.heading || 0;
+	this.heading = prams.heading || 0;
 
 	/**
 	 * @default 0
 	 * @type {Number}
 	 */
-	this.pitch = params.pitch || 0;
+	this.pitch = prams.pitch || 0;
 
 	/**
 	 * @default 0
 	 * @type {Number}
 	 */
-	this.elevation = params.elevation || 0;
+	this.elevation = prams.elevation || 0;
 
 	/**
 	 * @type {Image}
 	 */
-	this.image = params.image || null;
+	this.image = prams.image || null;
 
 	/**
 	 * @default "© 2013 Google"
 	 * @type {String}
 	 */
-	this.copyright = params.copyright || "© 2013 Google";
+	this.copyright = prams.copyright || "© 2013 Google";
 
 	/**
 	 * @type {String}
 	 */
-	this.image_date = params.image_date || "";
+	this.image_date = prams.image_date || "";
 
 };
 
@@ -182,8 +182,7 @@ var Hyperlapse = function(container, params) {
   // Check if we can use webGL
   var isWebGL = function () {
     try {
-      return !! window.WebGLRenderingContext
-              && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' );
+      return !! window.WebGLRenderingContext && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' );
     } catch(e) {
       console.log('WebGL not available starting with CanvasRenderer');
       return false;
