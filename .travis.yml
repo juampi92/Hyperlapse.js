@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- "0.12"
+script: bash ./deploy.sh
+env:
+  global:
+  - GH_REF: github.com/juampi92/Hyperlapse.js.git
+  - secure: "YCfDbnbUWsgfDSu0gJ03p0HJW7K6Ks2vm4e8itwTTqbp1s7LTsiXCcwZgC41t2pRdriqlNz7vj/l8QbhEADQc8fek8z9zTlcBDyHg1NBm8nMFXYuOR/ucHbAKoEtzRQP1BDo3fqm5QrjxJrLJ3o1y0C5wvw+17dd0JMKlC9PuHG06emRtrL5jhonn3//flMrBmnA7lVYaMHMaAO1OUsAVk/cXUQa+C03Ih1Yb+quY3XD6YMCCqxRFgPSpS9L4kyCR6lKa3giqy3oJVQ9m+xdKKM9QuaiM67gPLh2I7l056ScWk/A3YfFJfrHuRo+fPjqkWBQQOZmkERveJucbt3XrP4ynsWi/FmTJaJvXPnqvGJoSIqlvGJriXDuxyTJOVDXs8Fy2CKNG/F83qhx1HziC6o7NTvvUsdt8Ugct2wAP4VRZu3UG4ujlO7KGrDxv3WQPXyCfJcssjEQrFF4kMRI8RJyw/seBLluc+x7YbWhHVkiiLrMboKuBZV80JQvLgGln6hF6jstYFXBH2/Y6bIrmgV8omUNCZm7QUGiWAb/oje/gN3n8B9eTEdH9N3fnlePJiBTDIljEDZQuH0TgDG5fiR7jT0GDnarasmZKW+VkK2DjyTXql+4FygwfP80REcJ/exzmmTIOiNkWKenkrALmGwRh+Ksnrgi40utgHHn3sw="
