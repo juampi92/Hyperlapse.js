@@ -7,6 +7,8 @@ npm run build
 echo "Listing directory"
 ls
 
+git checkout gh-pages
+
 # inside this git repo we'll pretend to be a new user
 git config user.name "Travis CI"
 git config user.email "juampi92@gmail.com"
