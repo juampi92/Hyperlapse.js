@@ -29,70 +29,7 @@ var pointOnLine = function(t, a, b) {
 	return new google.maps.LatLng(x.toDeg(), y.toDeg());
 };
 
-/**
- * @class
- * @classdesc Value object for a single point in a Hyperlapse sequence.
- * @constructor
- * @param {google.maps.LatLng} location
- * @param {String} pano_id
- * @param {Object} params
- * @param {Number} [params.heading=0]
- * @param {Number} [params.pitch=0]
- * @param {Number} [params.elevation=0]
- * @param {Image} [params.image=null]
- * @param {String} [params.copyright="© 2013 Google"]
- * @param {String} [params.image_date=""]
- */
-var HyperlapsePoint = function(location, pano_id, params ) {
-
-	var self = this;
-	var prams = params || {};
-
-	/**
-	 * @type {google.maps.LatLng}
-	 */
-	this.location = location;
-
-	/**
-	 * @type {Number}
-	 */
-	this.pano_id = pano_id;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.heading = prams.heading || 0;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.pitch = prams.pitch || 0;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.elevation = prams.elevation || 0;
-
-	/**
-	 * @type {Image}
-	 */
-	this.image = prams.image || null;
-
-	/**
-	 * @default "© 2013 Google"
-	 * @type {String}
-	 */
-	this.copyright = prams.copyright || "© 2013 Google";
-
-	/**
-	 * @type {String}
-	 */
-	this.image_date = prams.image_date || "";
-
-};
+var HyperlapsePoint = require('./HyperlapsePoint');
 
 /**
  * @class

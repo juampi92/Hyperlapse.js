@@ -1,0 +1,12 @@
+{
+  "name": "Hyperlapse.js",
+  "description": "Javascript hyper-lapse utility for Google Street View",
+  "version": "",
+  "url": "http://example.com/",
+  "options": {
+    "outdir": "docs/",
+    "paths": "src/",
+    "themedir": "node_modules/yuidoc-bootstrap-theme",
+    "helpers": ["node_modules/yuidoc-bootstrap-theme/helpers/helpers.js"]
+  }
+}

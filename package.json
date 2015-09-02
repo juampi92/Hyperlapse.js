@@ -19,14 +19,15 @@
   "devDependencies": {
     "browserify": "^11.0.1",
     "chai": "^3.2.0",
-    "jsdoc": "^3.3.2",
     "jshint": "^2.8.0",
     "mocha": "^2.3.0",
-    "uglify-js": "^2.4.24"
+    "uglify-js": "^2.4.24",
+    "yuidoc-bootstrap-theme": "https://github.com/juampi92/yuidoc-bootstrap-theme/tarball/master",
+    "yuidocjs": "^0.9.0"
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "doc": "jsdoc -c docs/conf.json -d docs",
+    "doc": "yuidoc -c yuidoc.json",
     "hint": "jshint src/",
     "browserify": "browserify src/Hyperlapse.js -o build/hyperlapse.js",
     "uglify": "uglifyjs -o build/hyperlapse.min.js build/hyperlapse.js",
