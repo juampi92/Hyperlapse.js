@@ -1,7 +1,8 @@
 /**
- * @overview Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.
+ * Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.
+ * @module Hyperlapse
  * @author Peter Nitsch
- * @copyright Teehan+Lax 2013
+ * @author Juan Pablo Barreto <juampi92@gmail.com>
  */
 
 Number.prototype.toRad = function() {
@@ -32,21 +33,21 @@ var pointOnLine = function(t, a, b) {
 var HyperlapsePoint = require('./HyperlapsePoint');
 
 /**
- * @class
+ * @class Hyperlapse
  * @constructor
  * @param {Node} container - HTML element
  * @param {Object} params
- * @param {Number} [params.width=800]
- * @param {Number} [params.height=400]
- * @param {boolean} [params.use_elevation=false]
- * @param {Number} [params.distance_between_points=5]
- * @param {Number} [params.max_points=100]
- * @param {Number} [params.fov=70]
- * @param {Number} [params.zoom=1]
- * @param {google.maps.LatLng} [params.lookat=null]
- * @param {Number} [params.millis=50]
- * @param {Number} [params.elevation=0]
- * @param {Number} [params.tilt=0]
+ * @param {Number} params.width 800
+ * @param {Number} params.height 400
+ * @param {boolean} params.use_elevation false
+ * @param {Number} params.distance_between_points 5
+ * @param {Number} params.max_points 100
+ * @param {Number} params.fov 70
+ * @param {Number} params.zoom 1
+ * @param {google.maps.LatLng} params.lookat null
+ * @param {Number} params.millis 50
+ * @param {Number} params.elevation 0
+ * @param {Number} params.tilt 0
  */
 var Hyperlapse = function(container, params) {
 

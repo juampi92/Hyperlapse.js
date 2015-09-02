@@ -1,8 +1,8 @@
 {
   "name": "Hyperlapse.js",
   "description": "Javascript hyper-lapse utility for Google Street View",
-  "version": "",
-  "url": "http://example.com/",
+  "url": "https://juampi92.github.io/Hyperlapse.js/ ",
+  "silent": "true",
   "options": {
     "outdir": "docs/",
     "paths": "src/",
