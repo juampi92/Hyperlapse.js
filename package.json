@@ -31,6 +31,6 @@
     "hint": "jshint src/",
     "browserify": "browserify src/Hyperlapse.js -o build/hyperlapse.js",
     "uglify": "uglifyjs -o build/hyperlapse.min.js build/hyperlapse.js",
-    "build": "npm run hint && npm run browserify && npm run uglify && npm run doc"
+    "build": "npm run hint && mkdir build && npm run browserify && npm run uglify && npm run doc"
   }
 }

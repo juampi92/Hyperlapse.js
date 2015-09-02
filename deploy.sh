@@ -7,7 +7,6 @@ mkdir out
 mkdir out/build
 mkdir out/docs
 
-mkdir build
 npm run build
 
 cp -r build/ out/
