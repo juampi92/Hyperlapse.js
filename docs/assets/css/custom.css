@@ -1,0 +1,51 @@
+/* -- SideBar -------------------------------------------------------- */
+
+input[type="search"] {
+    margin: 5px 0px 5px 0px;
+}
+
+#sidebar .tab-content {
+    border: 1px solid #DFDFDF;
+    border-top: 0px;
+    padding-bottom: 5px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+
+/* -- Header -------------------------------------------------------- */
+
+.navbar.navbar-inverse {
+    border-radius: 0px;
+}
+
+
+/* -- General -------------------------------------------------------- */
+.panel-title {
+    display: inline;
+    font-size: 16px;
+    font-weight: 700;
+    color: #c7254e;
+    background-color: #f9f2f4;
+}
+
+.args {
+    display: inline;
+}
+
+.arg + .arg:before {
+    content: ",";
+}
+
+p {
+    margin: 0px;
+}
+
+.methods,
+.events,
+.attrs,
+.properties {
+    display: inline-table;
+    max-width: 400px;
+    margin-right: 10px;
+}
