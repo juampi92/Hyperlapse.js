@@ -2,24 +2,24 @@
     "project": {
         "name": "Hyperlapse.js",
         "description": "Javascript hyper-lapse utility for Google Street View",
-        "version": "",
-        "url": "http://example.com/"
+        "url": "https://juampi92.github.io/Hyperlapse.js/ ",
+        "silent": "true"
     },
     "files": {
         "src/Hyperlapse.js": {
             "name": "src/Hyperlapse.js",
-            "modules": {},
+            "modules": {
+                "Hyperlapse": 1
+            },
             "classes": {
-                "": 1
+                "Hyperlapse": 1
             },
             "fors": {},
             "namespaces": {}
         },
         "src/HyperlapsePoint.js": {
             "name": "src/HyperlapsePoint.js",
-            "modules": {
-                "Hyperlapse": 1
-            },
+            "modules": {},
             "classes": {
                 "HyperlapsePoint": 1
             },
@@ -33,20 +33,31 @@
             "submodules": {},
             "elements": {},
             "classes": {
-                "": 1,
+                "Hyperlapse": 1,
                 "HyperlapsePoint": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
             "file": "src/HyperlapsePoint.js",
-            "line": 5
+            "line": 5,
+            "description": "Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.",
+            "author": "Juan Pablo Barreto <juampi92@gmail.com>"
         }
     },
     "classes": {
-        "": {
+        "Hyperlapse": {
+            "name": "Hyperlapse",
+            "shortname": "Hyperlapse",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Hyperlapse",
+            "namespace": "",
             "file": "src/Hyperlapse.js",
-            "line": 34,
+            "line": 35,
             "is_constructor": 1,
             "params": [
                 {
@@ -61,85 +72,62 @@
                     "props": [
                         {
                             "name": "width",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "800"
+                            "description": "800",
+                            "type": "Number"
                         },
                         {
                             "name": "height",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "400"
+                            "description": "400",
+                            "type": "Number"
                         },
                         {
                             "name": "use_elevation",
-                            "description": "",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
+                            "description": "false",
+                            "type": "Boolean"
                         },
                         {
                             "name": "distance_between_points",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "5"
+                            "description": "5",
+                            "type": "Number"
                         },
                         {
                             "name": "max_points",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "100"
+                            "description": "100",
+                            "type": "Number"
                         },
                         {
                             "name": "fov",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "70"
+                            "description": "70",
+                            "type": "Number"
                         },
                         {
                             "name": "zoom",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "1"
+                            "description": "1",
+                            "type": "Number"
                         },
                         {
                             "name": "lookat",
-                            "description": "",
-                            "type": "google.maps.LatLng",
-                            "optional": true,
-                            "optdefault": "null"
+                            "description": "null",
+                            "type": "google.maps.LatLng"
                         },
                         {
                             "name": "millis",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "50"
+                            "description": "50",
+                            "type": "Number"
                         },
                         {
                             "name": "elevation",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "0"
+                            "description": "0",
+                            "type": "Number"
                         },
                         {
                             "name": "tilt",
-                            "description": "",
-                            "type": "Number",
-                            "optional": true,
-                            "optdefault": "0"
+                            "description": "0",
+                            "type": "Number"
                         }
                     ]
                 }
-            ],
-            "module": "Hyperlapse"
+            ]
         },
         "HyperlapsePoint": {
             "name": "HyperlapsePoint",
@@ -177,15 +165,7 @@
     "classitems": [
         {
             "file": "src/Hyperlapse.js",
-            "line": 1,
-            "overview": "Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.",
-            "author": "Peter Nitsch",
-            "copyright": "Teehan+Lax 2013",
-            "class": "HyperlapsePoint"
-        },
-        {
-            "file": "src/Hyperlapse.js",
-            "line": 82,
+            "line": 83,
             "itemtype": "event",
             "name": "Hyperlapse#onError",
             "params": [
@@ -202,11 +182,12 @@
                     ]
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 89,
+            "line": 90,
             "itemtype": "event",
             "name": "Hyperlapse#onFrame",
             "params": [
@@ -228,32 +209,36 @@
                     ]
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 97,
+            "line": 98,
             "itemtype": "event",
             "name": "Hyperlapse#onPlay",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 102,
+            "line": 103,
             "itemtype": "event",
             "name": "Hyperlapse#onPause",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 168,
+            "line": 169,
             "itemtype": "event",
             "name": "Hyperlapse#onLoadCanceled",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 178,
+            "line": 179,
             "itemtype": "event",
             "name": "Hyperlapse#onLoadProgress",
             "params": [
@@ -270,18 +255,20 @@
                     ]
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 185,
+            "line": 186,
             "itemtype": "event",
             "name": "Hyperlapse#onLoadComplete",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 197,
+            "line": 198,
             "itemtype": "event",
             "name": "Hyperlapse#onRouteProgress",
             "params": [
@@ -298,11 +285,12 @@
                     ]
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 204,
+            "line": 205,
             "itemtype": "event",
             "name": "Hyperlapse#onRouteComplete",
             "params": [
@@ -324,102 +312,115 @@
                     ]
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 459,
+            "line": 460,
             "type": "{google.maps.LatLng}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 464,
+            "line": 465,
             "default": "50",
             "type": "{Number}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 470,
+            "line": 471,
             "default": "0",
             "type": "{Number}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 476,
+            "line": 477,
             "deprecated": true,
             "deprecationMessage": "should use offset instead",
             "default": "0",
             "type": "{Number}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 483,
+            "line": 484,
             "default": "{x:0, y:0}",
             "type": "{Object}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 489,
+            "line": 490,
             "default": "{x:0, y:0, z:0}",
             "type": "{Object}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 495,
+            "line": 496,
             "default": "false",
             "type": "{boolean}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 501,
+            "line": 502,
             "default": "false",
             "type": "{boolean}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 507,
+            "line": 508,
             "default": "0",
             "type": "{Number}",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 513,
+            "line": 514,
             "return": {
                 "description": "",
                 "type": "Boolean"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 518,
+            "line": 519,
             "return": {
                 "description": "",
                 "type": "Boolean"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 523,
+            "line": 524,
             "return": {
                 "description": "",
                 "type": "Number"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 528,
+            "line": 529,
             "params": [
                 {
                     "name": "v",
@@ -427,11 +428,12 @@
                     "type": "Number"
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 533,
+            "line": 534,
             "params": [
                 {
                     "name": "v",
@@ -439,11 +441,12 @@
                     "type": "Number"
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 538,
+            "line": 539,
             "params": [
                 {
                     "name": "v",
@@ -451,47 +454,52 @@
                     "type": "Number"
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 543,
+            "line": 544,
             "return": {
                 "description": "",
                 "type": "Number"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 548,
+            "line": 549,
             "return": {
                 "description": "",
                 "type": "THREE.WebGLRenderer"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 553,
+            "line": 554,
             "return": {
                 "description": "",
                 "type": "Image"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 560,
+            "line": 561,
             "return": {
                 "description": "",
                 "type": "HyperlapsePoint"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 567,
+            "line": 568,
             "params": [
                 {
                     "name": "point",
@@ -509,11 +517,12 @@
                     "type": "Function"
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 589,
+            "line": 590,
             "params": [
                 {
                     "name": "v",
@@ -521,11 +530,12 @@
                     "type": "Number"
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 597,
+            "line": 598,
             "params": [
                 {
                     "name": "width",
@@ -538,17 +548,19 @@
                     "type": "Number"
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 608,
+            "line": 609,
             "description": "Resets all members to defaults",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 634,
+            "line": 635,
             "params": [
                 {
                     "name": "parameters",
@@ -575,56 +587,64 @@
                     ]
                 }
             ],
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 660,
+            "line": 661,
             "fires": "Hyperlapse#onLoadComplete",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 668,
+            "line": 669,
             "fires": "Hyperlapse#onLoadCanceled",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 677,
+            "line": 678,
             "return": {
                 "description": "",
                 "type": "google.maps.LatLng"
             },
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 684,
+            "line": 685,
             "description": "Animate through all frames in sequence",
             "fires": "Hyperlapse#onPlay",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 695,
+            "line": 696,
             "description": "Pause animation",
             "fires": "Hyperlapse#onPause",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 704,
+            "line": 705,
             "description": "Display next frame in sequence",
             "fires": "Hyperlapse#onFrame",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/Hyperlapse.js",
-            "line": 717,
+            "line": 718,
             "description": "Display previous frame in sequence",
             "fires": "Hyperlapse#onFrame",
-            "class": "HyperlapsePoint"
+            "class": "Hyperlapse",
+            "module": "Hyperlapse"
         },
         {
             "file": "src/HyperlapsePoint.js",
@@ -705,196 +725,184 @@
     ],
     "warnings": [
         {
-            "message": "unknown tag: overview",
-            "line": " src/Hyperlapse.js:1"
-        },
-        {
-            "message": "unknown tag: copyright",
-            "line": " src/Hyperlapse.js:1"
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/Hyperlapse.js:514"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:513"
+            "line": " src/Hyperlapse.js:519"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:518"
+            "line": " src/Hyperlapse.js:524"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:523"
+            "line": " src/Hyperlapse.js:544"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:543"
+            "line": " src/Hyperlapse.js:549"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:548"
+            "line": " src/Hyperlapse.js:554"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:553"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:560"
+            "line": " src/Hyperlapse.js:561"
         },
         {
             "message": "unknown tag: fires",
-            "line": " src/Hyperlapse.js:660"
+            "line": " src/Hyperlapse.js:661"
         },
         {
             "message": "unknown tag: fires",
-            "line": " src/Hyperlapse.js:668"
+            "line": " src/Hyperlapse.js:669"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/Hyperlapse.js:677"
+            "line": " src/Hyperlapse.js:678"
         },
         {
             "message": "unknown tag: fires",
-            "line": " src/Hyperlapse.js:684"
+            "line": " src/Hyperlapse.js:685"
         },
         {
             "message": "unknown tag: fires",
-            "line": " src/Hyperlapse.js:695"
+            "line": " src/Hyperlapse.js:696"
         },
         {
             "message": "unknown tag: fires",
-            "line": " src/Hyperlapse.js:704"
+            "line": " src/Hyperlapse.js:705"
         },
         {
             "message": "unknown tag: fires",
-            "line": " src/Hyperlapse.js:717"
+            "line": " src/Hyperlapse.js:718"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:1"
+            "line": " src/Hyperlapse.js:460"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:459"
+            "line": " src/Hyperlapse.js:465"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:464"
+            "line": " src/Hyperlapse.js:471"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:470"
+            "line": " src/Hyperlapse.js:477"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:476"
+            "line": " src/Hyperlapse.js:484"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:483"
+            "line": " src/Hyperlapse.js:490"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:489"
+            "line": " src/Hyperlapse.js:496"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:495"
+            "line": " src/Hyperlapse.js:502"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:501"
+            "line": " src/Hyperlapse.js:508"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:507"
+            "line": " src/Hyperlapse.js:514"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:513"
+            "line": " src/Hyperlapse.js:519"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:518"
+            "line": " src/Hyperlapse.js:524"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:523"
+            "line": " src/Hyperlapse.js:529"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:528"
+            "line": " src/Hyperlapse.js:534"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:533"
+            "line": " src/Hyperlapse.js:539"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:538"
+            "line": " src/Hyperlapse.js:544"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:543"
+            "line": " src/Hyperlapse.js:549"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:548"
+            "line": " src/Hyperlapse.js:554"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:553"
+            "line": " src/Hyperlapse.js:561"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:560"
+            "line": " src/Hyperlapse.js:568"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:567"
+            "line": " src/Hyperlapse.js:590"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:589"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/Hyperlapse.js:597"
+            "line": " src/Hyperlapse.js:598"
         },
         {
             "message": "Missing item type\nResets all members to defaults",
-            "line": " src/Hyperlapse.js:608"
+            "line": " src/Hyperlapse.js:609"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:634"
+            "line": " src/Hyperlapse.js:635"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:660"
+            "line": " src/Hyperlapse.js:661"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:668"
+            "line": " src/Hyperlapse.js:669"
         },
         {
             "message": "Missing item type",
-            "line": " src/Hyperlapse.js:677"
+            "line": " src/Hyperlapse.js:678"
         },
         {
             "message": "Missing item type\nAnimate through all frames in sequence",
-            "line": " src/Hyperlapse.js:684"
+            "line": " src/Hyperlapse.js:685"
         },
         {
             "message": "Missing item type\nPause animation",
-            "line": " src/Hyperlapse.js:695"
+            "line": " src/Hyperlapse.js:696"
         },
         {
             "message": "Missing item type\nDisplay next frame in sequence",
-            "line": " src/Hyperlapse.js:704"
+            "line": " src/Hyperlapse.js:705"
         },
         {
             "message": "Missing item type\nDisplay previous frame in sequence",
-            "line": " src/Hyperlapse.js:717"
+            "line": " src/Hyperlapse.js:718"
         }
     ]
 }

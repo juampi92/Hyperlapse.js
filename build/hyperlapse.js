@@ -1,9 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 /**
- * @overview Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.
+ * Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.
+ * @module Hyperlapse
  * @author Peter Nitsch
- * @copyright Teehan+Lax 2013
+ * @author Juan Pablo Barreto <juampi92@gmail.com>
  */
 
 Number.prototype.toRad = function() {
@@ -34,21 +35,21 @@ var pointOnLine = function(t, a, b) {
 var HyperlapsePoint = require('./HyperlapsePoint');
 
 /**
- * @class
+ * @class Hyperlapse
  * @constructor
  * @param {Node} container - HTML element
  * @param {Object} params
- * @param {Number} [params.width=800]
- * @param {Number} [params.height=400]
- * @param {boolean} [params.use_elevation=false]
- * @param {Number} [params.distance_between_points=5]
- * @param {Number} [params.max_points=100]
- * @param {Number} [params.fov=70]
- * @param {Number} [params.zoom=1]
- * @param {google.maps.LatLng} [params.lookat=null]
- * @param {Number} [params.millis=50]
- * @param {Number} [params.elevation=0]
- * @param {Number} [params.tilt=0]
+ * @param {Number} params.width 800
+ * @param {Number} params.height 400
+ * @param {boolean} params.use_elevation false
+ * @param {Number} params.distance_between_points 5
+ * @param {Number} params.max_points 100
+ * @param {Number} params.fov 70
+ * @param {Number} params.zoom 1
+ * @param {google.maps.LatLng} params.lookat null
+ * @param {Number} params.millis 50
+ * @param {Number} params.elevation 0
+ * @param {Number} params.tilt 0
  */
 var Hyperlapse = function(container, params) {
 

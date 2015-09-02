@@ -1,8 +1,8 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "HyperlapsePoint",
-        null
+        "Hyperlapse",
+        "HyperlapsePoint"
     ],
     "modules": [
         "Hyperlapse"
@@ -10,7 +10,8 @@ YUI.add("yuidoc-meta", function(Y) {
     "allModules": [
         {
             "displayName": "Hyperlapse",
-            "name": "Hyperlapse"
+            "name": "Hyperlapse",
+            "description": "Hyperapse.js - JavaScript hyper-lapse utility for Google Street View."
         }
     ],
     "elements": []
