@@ -3,13 +3,15 @@ set -e # exit with nonzero exit code if anything fails
 
 # clear and re-create the out directory
 rm -rf out || exit 0;
-mkdir out;
+mkdir out
+mkdir out/build
+mkdir out/docs
 
 mkdir build
 npm run build
 
-cp build out/build
-cp docs out/docs
+cp -r build/ out/build/
+cp -r docs/ out/docs/
 
 # go to the out directory and create a *new* Git repo
 cd out
