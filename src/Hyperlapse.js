@@ -29,70 +29,7 @@ var pointOnLine = function(t, a, b) {
 	return new google.maps.LatLng(x.toDeg(), y.toDeg());
 };
 
-/**
- * @class
- * @classdesc Value object for a single point in a Hyperlapse sequence.
- * @constructor
- * @param {google.maps.LatLng} location
- * @param {String} pano_id
- * @param {Object} params
- * @param {Number} [params.heading=0]
- * @param {Number} [params.pitch=0]
- * @param {Number} [params.elevation=0]
- * @param {Image} [params.image=null]
- * @param {String} [params.copyright="© 2013 Google"]
- * @param {String} [params.image_date=""]
- */
-var HyperlapsePoint = function(location, pano_id, params ) {
-
-	var self = this;
-	var params = params || {};
-
-	/**
-	 * @type {google.maps.LatLng}
-	 */
-	this.location = location;
-
-	/**
-	 * @type {Number}
-	 */
-	this.pano_id = pano_id;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.heading = params.heading || 0;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.pitch = params.pitch || 0;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.elevation = params.elevation || 0;
-
-	/**
-	 * @type {Image}
-	 */
-	this.image = params.image || null;
-
-	/**
-	 * @default "© 2013 Google"
-	 * @type {String}
-	 */
-	this.copyright = params.copyright || "© 2013 Google";
-
-	/**
-	 * @type {String}
-	 */
-	this.image_date = params.image_date || "";
-
-};
+var HyperlapsePoint = require('./HyperlapsePoint');
 
 /**
  * @class
@@ -182,8 +119,7 @@ var Hyperlapse = function(container, params) {
   // Check if we can use webGL
   var isWebGL = function () {
     try {
-      return !! window.WebGLRenderingContext
-              && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' );
+      return !! window.WebGLRenderingContext && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' );
     } catch(e) {
       console.log('WebGL not available starting with CanvasRenderer');
       return false;
@@ -791,3 +727,5 @@ var Hyperlapse = function(container, params) {
 		}
 	};
 };
+
+global.Hyperlapse = module.exports = Hyperlapse;

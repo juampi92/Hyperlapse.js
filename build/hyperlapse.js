@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: Hyperlapse.js</title>
-    
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-    
-    <h1 class="page-title">Source: Hyperlapse.js</h1>
-    
-    
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source"><code>/**
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global){
+/**
  * @overview Hyperapse.js - JavaScript hyper-lapse utility for Google Street View.
  * @author Peter Nitsch
  * @copyright Teehan+Lax 2013
@@ -42,7 +17,7 @@ Number.prototype.toDeg = function() {
 // Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from &lt; 0 ? this.length + from : from;
+  this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
 
@@ -56,70 +31,7 @@ var pointOnLine = function(t, a, b) {
 	return new google.maps.LatLng(x.toDeg(), y.toDeg());
 };
 
-/**
- * @class
- * @classdesc Value object for a single point in a Hyperlapse sequence.
- * @constructor
- * @param {google.maps.LatLng} location
- * @param {String} pano_id
- * @param {Object} params
- * @param {Number} [params.heading=0]
- * @param {Number} [params.pitch=0]
- * @param {Number} [params.elevation=0]
- * @param {Image} [params.image=null]
- * @param {String} [params.copyright="© 2013 Google"]
- * @param {String} [params.image_date=""]
- */
-var HyperlapsePoint = function(location, pano_id, params ) {
-
-	var self = this;
-	var params = params || {};
-
-	/**
-	 * @type {google.maps.LatLng}
-	 */
-	this.location = location;
-
-	/**
-	 * @type {Number}
-	 */
-	this.pano_id = pano_id;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.heading = params.heading || 0;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.pitch = params.pitch || 0;
-
-	/**
-	 * @default 0
-	 * @type {Number}
-	 */
-	this.elevation = params.elevation || 0;
-
-	/**
-	 * @type {Image}
-	 */
-	this.image = params.image || null;
-
-	/**
-	 * @default "© 2013 Google"
-	 * @type {String}
-	 */
-	this.copyright = params.copyright || "© 2013 Google";
-
-	/**
-	 * @type {String}
-	 */
-	this.image_date = params.image_date || "";
-
-};
+var HyperlapsePoint = require('./HyperlapsePoint');
 
 /**
  * @class
@@ -206,19 +118,23 @@ var Hyperlapse = function(container, params) {
 	_scene = new THREE.Scene();
 	_scene.add( _camera );
 
-	try {
-		var isWebGL = !!window.WebGLRenderingContext && !!document.createElement('canvas').getContext('experimental-webgl');
-	}catch(e){
-		console.log(e);
-	}
+  // Check if we can use webGL
+  var isWebGL = function () {
+    try {
+      return !! window.WebGLRenderingContext && !! document.createElement( 'canvas' ).getContext( 'experimental-webgl' );
+    } catch(e) {
+      console.log('WebGL not available starting with CanvasRenderer');
+      return false;
+    }
+  };
 
-	_renderer = new THREE.WebGLRenderer();
+  _renderer = isWebGL() ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
 	_renderer.autoClearColor = false;
 	_renderer.setSize( _w, _h );
 
-	_mesh = new THREE.Mesh( 
-		new THREE.SphereGeometry( 500, 60, 40 ), 
-		new THREE.MeshBasicMaterial( { map: new THREE.Texture(), side: THREE.DoubleSide } ) 
+	_mesh = new THREE.Mesh(
+		new THREE.SphereGeometry( 500, 60, 40 ),
+		new THREE.MeshBasicMaterial( { map: new THREE.Texture(), side: THREE.DoubleSide, overdraw: true } )
 	);
 	_scene.add( _mesh );
 
@@ -267,7 +183,7 @@ var Hyperlapse = function(container, params) {
  	 * @param {Number} e.position
 	 */
 	var handleLoadProgress = function (e) { if (self.onLoadProgress) self.onLoadProgress(e); };
-	
+
 	/**
 	 * @event Hyperlapse#onLoadComplete
 	 */
@@ -291,32 +207,32 @@ var Hyperlapse = function(container, params) {
 	 * @event Hyperlapse#onRouteComplete
 	 * @param {Object} e
 	 * @param {google.maps.DirectionsResult} e.response
- 	 * @param {Array&lt;HyperlapsePoint>} e.points
+ 	 * @param {Array<HyperlapsePoint>} e.points
 	 */
 	var handleRouteComplete = function (e) {
 		var elevations = [];
-		for(var i=0; i&lt;_h_points.length; i++) {
+		for(var i=0; i<_h_points.length; i++) {
 			elevations[i] = _h_points[i].location;
 		}
 
 		if(_use_elevation) {
 			getElevation(elevations, function(results){
 				if(results) {
-					for(i=0; i&lt;_h_points.length; i++) {
+					for(i=0; i<_h_points.length; i++) {
 						_h_points[i].elevation = results[i].elevation;
 					}
 				} else {
-					for(i=0; i&lt;_h_points.length; i++) {
+					for(i=0; i<_h_points.length; i++) {
 						_h_points[i].elevation = -1;
 					}
 				}
-				
+
 				self.setLookat(self.lookat, true, function(){
 					if (self.onRouteComplete) self.onRouteComplete(e);
 				});
 			});
 		} else {
-			for(i=0; i&lt;_h_points.length; i++) {
+			for(i=0; i<_h_points.length; i++) {
 				_h_points[i].elevation = -1;
 			}
 
@@ -325,7 +241,7 @@ var Hyperlapse = function(container, params) {
 			});
 		}
 
-		
+
 	};
 
 	var parsePoints = function(response) {
@@ -336,8 +252,8 @@ var Hyperlapse = function(container, params) {
 				_prev_pano_id = _loader.id;
 
 				var hp = new HyperlapsePoint( _loader.location, _loader.id, {
-					heading:_loader.rotation, 
-					pitch: _loader.pitch, 
+					heading:_loader.rotation,
+					pitch: _loader.pitch,
 					elevation: _loader.elevation,
 					copyright: _loader.copyright,
 					image_date: _loader.image_date
@@ -394,25 +310,25 @@ var Hyperlapse = function(container, params) {
 			var legs = route.legs;
 
 			var total_distance = 0;
-			for(var i=0; i&lt;legs.length; ++i) {
+			for(var i=0; i<legs.length; ++i) {
 				total_distance += legs[i].distance.value;
 			}
 
 			var segment_length = total_distance/_max_points;
-			_d = (segment_length &lt; _distance_between_points) ? _d = _distance_between_points : _d = segment_length;
+			_d = (segment_length < _distance_between_points) ? _d = _distance_between_points : _d = segment_length;
 
 			var d = 0;
 			var r = 0;
 			var a, b;
 
-			for(i=0; i&lt;path.length; i++) {
-				if(i+1 &lt; path.length) {
+			for(i=0; i<path.length; i++) {
+				if(i+1 < path.length) {
 
 					a = path[i];
 					b = path[i+1];
 					d = google.maps.geometry.spherical.computeDistanceBetween(a, b);
 
-					if(r > 0 && r &lt; d) {
+					if(r > 0 && r < d) {
 						a = pointOnLine(r/d, a, b);
 						d = google.maps.geometry.spherical.computeDistanceBetween(a, b);
 						_raw_points.push(a);
@@ -426,7 +342,7 @@ var Hyperlapse = function(container, params) {
 						var segs = Math.floor(d/_d);
 
 						if(segs > 0) {
-							for(var j=0; j&lt;segs; j++) {
+							for(var j=0; j<segs; j++) {
 								var t = j/segs;
 
 								if( t>0 || (t+i)===0  ) { // not start point
@@ -461,7 +377,7 @@ var Hyperlapse = function(container, params) {
 		_origin_heading = _h_points[_point_index].heading;
 		_origin_pitch = _h_points[_point_index].pitch;
 
-		if(self.use_lookat) 
+		if(self.use_lookat)
 			_lookat_heading = google.maps.geometry.spherical.computeHeading( _h_points[_point_index].location, self.lookat );
 
 		if(_h_points[_point_index].elevation != -1 ) {
@@ -469,8 +385,8 @@ var Hyperlapse = function(container, params) {
 			var d = google.maps.geometry.spherical.computeDistanceBetween( _h_points[_point_index].location, self.lookat );
 			var dif = _lookat_elevation - e;
 			var angle = Math.atan( Math.abs(dif)/d ).toDeg();
-			_position_y = (dif&lt;0) ? -angle : angle;
-		} 
+			_position_y = (dif<0) ? -angle : angle;
+		}
 
 		handleFrame({
 			position:_point_index,
@@ -640,7 +556,7 @@ var Hyperlapse = function(container, params) {
 	 * @returns {Image}
 	 */
 	this.getCurrentImage = function() {
-		return _h_points[_point_index].image; 
+		return _h_points[_point_index].image;
 	};
 
 	/**
@@ -662,17 +578,14 @@ var Hyperlapse = function(container, params) {
 			var e = getElevation([self.lookat], function(results){
 				if(results) {
 					_lookat_elevation = results[0].elevation;
-				} else {
-					_lookat_elevation = 0;
 				}
-				
+
 				if(callback && callback.apply) callback();
 			});
 		} else {
-			_lookat_elevation = 0;
 			if(callback && callback.apply) callback();
 		}
-		
+
 	};
 
 	/**
@@ -701,14 +614,12 @@ var Hyperlapse = function(container, params) {
 		_raw_points.remove(0,-1);
 		_h_points.remove(0,-1);
 
-		//self.elevation_offset = 0;
 		self.tilt = 0;
 
 		_lat = 0;
 		_lon = 0;
 
 		self.position.x = 0;
-		//self.position.y = 0;
 		self.offset.x = 0;
 		self.offset.y = 0;
 		self.offset.z = 0;
@@ -720,7 +631,6 @@ var Hyperlapse = function(container, params) {
 		_origin_pitch = 0;
 
 		_forward = true;
-		//_is_loading = false;
 	};
 
 	/**
@@ -763,7 +673,7 @@ var Hyperlapse = function(container, params) {
 	this.cancel = function() {
 		if(_is_loading) {
 			_cancel_load = true;
-		} 
+		}
 	};
 
 	/**
@@ -781,7 +691,7 @@ var Hyperlapse = function(container, params) {
 		if(!_is_loading) {
 			_is_playing = true;
 			handlePlay({});
-		} 
+		}
 	};
 
 	/**
@@ -818,25 +728,81 @@ var Hyperlapse = function(container, params) {
 			drawMaterial();
 		}
 	};
-};</code></pre>
-        </article>
-    </section>
+};
 
+global.Hyperlapse = module.exports = Hyperlapse;
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./HyperlapsePoint":2}],2:[function(require,module,exports){
+/**
+ * @module Hyperlapse
+ */
 
+/**
+ * 
+ * @class HyperlapsePoint
+ * @constructor
+ * @param  {google.maps.LatLng} location
+ * @param  {Number} pano_id
+ * @param  {Object} params
+ */
+var HyperlapsePoint = function(location, pano_id, params ) {
 
+  var self = this;
+  var prams = params || {};
 
-</div>
+  /**
+   * @attribute location
+   * @type {google.maps.LatLng}
+   */
+  this.location = location;
 
-<nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Hyperlapse.html">Hyperlapse</a></li><li><a href="HyperlapsePoint.html">HyperlapsePoint</a></li></ul><h3>Events</h3><ul><li><a href="Hyperlapse.html#event:onError">onError</a></li><li><a href="Hyperlapse.html#event:onFrame">onFrame</a></li><li><a href="Hyperlapse.html#event:onLoadCanceled">onLoadCanceled</a></li><li><a href="Hyperlapse.html#event:onLoadComplete">onLoadComplete</a></li><li><a href="Hyperlapse.html#event:onLoadProgress">onLoadProgress</a></li><li><a href="Hyperlapse.html#event:onPause">onPause</a></li><li><a href="Hyperlapse.html#event:onPlay">onPlay</a></li><li><a href="Hyperlapse.html#event:onRouteComplete">onRouteComplete</a></li><li><a href="Hyperlapse.html#event:onRouteProgress">onRouteProgress</a></li></ul>
-</nav>
+  /**
+   * @attribute pano_id
+   * @type {Number}
+   */
+  this.pano_id = pano_id;
 
-<br clear="both">
+  /**
+   * @attribute heading
+   * @default 0
+   * @type {Number}
+   */
+  this.heading = prams.heading || 0;
 
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Wed Apr 10 2013 15:45:38 GMT-0400 (EDT)
-</footer>
+  /**
+   * @attribute pitch
+   * @default 0
+   * @type {Number}
+   */
+  this.pitch = prams.pitch || 0;
 
-<script> prettyPrint(); </script>
-</body>
-</html>
+  /**
+   * @attribute elevation
+   * @default 0
+   * @type {Number}
+   */
+  this.elevation = prams.elevation || 0;
+
+  /**
+   * @attribute image
+   * @type {Image}
+   */
+  this.image = prams.image || null;
+
+  /**
+   * @attribute copyright
+   * @default "© 2013 Google"
+   * @type {String}
+   */
+  this.copyright = prams.copyright || "© 2013 Google";
+
+  /**
+   * @attribute image_date
+   * @type {String}
+   */
+  this.image_date = prams.image_date || "";
+
+};
+
+module.exports = HyperlapsePoint;
+},{}]},{},[1]);
