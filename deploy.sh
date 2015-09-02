@@ -10,8 +10,8 @@ mkdir out/docs
 mkdir build
 npm run build
 
-cp -r build/ out/build/
-cp -r docs/ out/docs/
+cp -r build/ out/
+cp -r docs/ out/
 
 # go to the out directory and create a *new* Git repo
 cd out
