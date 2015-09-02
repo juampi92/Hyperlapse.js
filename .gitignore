@@ -1,3 +1,5 @@
 node_modules/
 docs/
+!docs/conf.json
 examples/
+build/

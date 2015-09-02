@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/juampi92/Hyperlapse.js",
   "devDependencies": {
+    "browserify": "^11.0.1",
     "chai": "^3.2.0",
     "jsdoc": "^3.3.2",
     "jshint": "^2.8.0",
@@ -25,8 +26,10 @@
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "doc": "jsdoc -c jsdoc.json -d docs",
-    "uglify": "uglifyjs -o build/hyperlapse.min.js src/Hyperlapse.js",
-    "hint": "jshint src/Hyperlapse.js"
+    "doc": "jsdoc -c docs/conf.json -d docs",
+    "hint": "jshint src/",
+    "browserify": "browserify src/Hyperlapse.js -o build/hyperlapse.js",
+    "uglify": "uglifyjs -o build/hyperlapse.min.js build/hyperlapse.js",
+    "build": "npm run hint && npm run browserify && npm run uglify && npm run doc"
   }
 }

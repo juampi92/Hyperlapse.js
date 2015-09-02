@@ -790,3 +790,5 @@ var Hyperlapse = function(container, params) {
 		}
 	};
 };
+
+global.Hyperlapse = module.exports = Hyperlapse;
