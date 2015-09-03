@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 
   // Load modules
-  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-yuidoc');
@@ -89,28 +88,21 @@ module.exports = function(grunt) {
           helpers: ['node_modules/yuidoc-bootstrap-theme/helpers/helpers.js']
         }
       }
-    },
-
-    // Configure a mochaTest task 
-    mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec',
-          captureFile: 'results.txt', // Optionally capture the reporter output to a file 
-          quiet: false, // Optionally suppress output to standard out (defaults to false) 
-          clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false) 
-        },
-        src: ['test/**/*.js']
-      }
     }
 
 
   });
 
   // Register tasks
-  grunt.registerTask('test', 'mochaTest:test');
 
-  grunt.registerTask('build', ['jshint:all', 'clean:build', 'browserify', 'uglify', 'yuidoc:compile', 'copy:buildversion']);
+  grunt.registerTask('build', [
+    'jshint:all',
+    'clean:build',
+    'browserify',
+    'uglify',
+    'yuidoc:compile',
+    'copy:buildversion'
+  ]);
 
   grunt.registerTask('watch', ['watchify:dev']);
 

@@ -27,7 +27,10 @@
     "grunt-contrib-yuidoc": "^0.10.0",
     "grunt-mocha-test": "^0.12.7",
     "grunt-watchify": "^0.1.0",
+    "mocha": "^2.3.0",
     "yuidoc-bootstrap-theme": "https://github.com/juampi92/yuidoc-bootstrap-theme/tarball/master"
   },
-  "scripts": {}
+  "scripts": {
+    "test": "mocha --reporter spec"
+  }
 }
