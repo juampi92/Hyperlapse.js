@@ -458,23 +458,27 @@ var Hyperlapse = function(container, params) {
 
 
 	/**
+	 * @attribute lookat
 	 * @type {google.maps.LatLng}
 	 */
 	this.lookat = _params.lookat || null;
 
 	/**
+	 * @attribute millis
 	 * @default 50
 	 * @type {Number}
 	 */
 	this.millis = _params.millis || 50;
 
 	/**
+	 * @attribute elevation
 	 * @default 0
 	 * @type {Number}
 	 */
 	this.elevation_offset = _params.elevation || 0;
 
 	/**
+	 * @attribute tilt
 	 * @deprecated should use offset instead
 	 * @default 0
 	 * @type {Number}
@@ -482,93 +486,109 @@ var Hyperlapse = function(container, params) {
 	this.tilt = _params.tilt || 0;
 
 	/**
+	 * @attribute position
 	 * @default {x:0, y:0}
 	 * @type {Object}
 	 */
 	this.position = {x:0, y:0};
 
 	/**
+	 * @attribute offset
 	 * @default {x:0, y:0, z:0}
 	 * @type {Object}
 	 */
 	this.offset = {x:0, y:0, z:0};
 
 	/**
+	 * @attribute use_lookat
 	 * @default false
 	 * @type {boolean}
 	 */
 	this.use_lookat = _params.use_lookat || false;
 
 	/**
+	 * @attribute use_rotation_comp
 	 * @default false
 	 * @type {boolean}
 	 */
 	this.use_rotation_comp = false;
 
 	/**
+	 * @attribute rotation_comp
 	 * @default 0
 	 * @type {Number}
 	 */
 	this.rotation_comp = 0;
 
 	/**
-	 * @returns {boolean}
+	 * @method isPlaying
+	 * @return {boolean}
 	 */
 	this.isPlaying = function() { return _is_playing; };
 
 	/**
-	 * @returns {boolean}
+	 * @method isLoading
+	 * @return {Boolean}
 	 */
 	this.isLoading = function() { return _is_loading; };
 
 	/**
-	 * @returns {Number}
+	 * @method length
+	 * @return {Number}
 	 */
 	this.length = function() { return _h_points.length; };
 
 	/**
-	 * @param {Number} v
+	 * @method setPitch
+	 * @param  {Number} v
 	 */
 	this.setPitch = function(v) { _position_y = v; };
 
 	/**
-	 * @param {Number} v
+	 * @method setDistanceBetweenPoint
+	 * @param  {Number} v
 	 */
 	this.setDistanceBetweenPoint = function(v) { _distance_between_points = v; };
 
 	/**
-	 * @param {Number} v
+	 * @method setMaxPoints
+	 * @param  {Number} v
 	 */
 	this.setMaxPoints = function(v) { _max_points = v; };
 
 	/**
-	 * @returns {Number}
+	 * @method fov
+	 * @return {Number}
 	 */
 	this.fov = function() { return _fov; };
 
 	/**
-	 * @returns {THREE.WebGLRenderer}
+	 * @method webgl
+	 * @return {Image}
 	 */
 	this.webgl = function() { return _renderer; };
 
 	/**
-	 * @returns {Image}
+	 * @method getCurrentImage
+	 * @return {Image}
 	 */
 	this.getCurrentImage = function() {
 		return _h_points[_point_index].image;
 	};
 
 	/**
-	 * @returns {HyperlapsePoint}
+	 * @method getCurrentPoint
+	 * @return {HyperlapsePoint}
 	 */
 	this.getCurrentPoint = function() {
 		return _h_points[_point_index];
 	};
 
 	/**
+	 * @method setLookat
 	 * @param {google.maps.LatLng} point
-	 * @param {boolean} call_service
-	 * @param {function} callback
+	 * @param {Boolean} call_service
+	 * @param {Function} callback
 	 */
 	this.setLookat = function(point, call_service, callback) {
 		self.lookat = point;
@@ -588,6 +608,7 @@ var Hyperlapse = function(container, params) {
 	};
 
 	/**
+	 * @method setFov
 	 * @param {Number} v
 	 */
 	this.setFOV = function(v) {
@@ -596,6 +617,7 @@ var Hyperlapse = function(container, params) {
 	};
 
 	/**
+	 * @method setSize
 	 * @param {Number} width
 	 * @param {Number} height
 	 */
@@ -608,6 +630,7 @@ var Hyperlapse = function(container, params) {
 
 	/**
 	 * Resets all members to defaults
+	 * @method reset
 	 */
 	this.reset = function() {
 		_raw_points.remove(0,-1);
@@ -633,9 +656,10 @@ var Hyperlapse = function(container, params) {
 	};
 
 	/**
+	 * @method generate
 	 * @param {Object} parameters
-	 * @param {Number} [parameters.distance_between_points]
-	 * @param {Number} [parameters.max_points]
+	 * @param {Number} parameters.distance_between_points
+	 * @param {Number} parameters.max_points
 	 * @param {google.maps.DirectionsResult} parameters.route
 	 */
 	this.generate = function( params ) {
@@ -659,6 +683,7 @@ var Hyperlapse = function(container, params) {
 	};
 
 	/**
+	 * @method load
 	 * @fires Hyperlapse#onLoadComplete
 	 */
 	this.load = function() {
@@ -667,6 +692,7 @@ var Hyperlapse = function(container, params) {
 	};
 
 	/**
+	 * @method cancel
 	 * @fires Hyperlapse#onLoadCanceled
 	 */
 	this.cancel = function() {
@@ -676,7 +702,8 @@ var Hyperlapse = function(container, params) {
 	};
 
 	/**
-	 * @returns {google.maps.LatLng}
+	 * @method getCameraPosition
+	 * @return {google.maps.LatLng}
 	 */
 	this.getCameraPosition = function() {
 		return new google.maps.LatLng(_lat, _lon);
@@ -684,6 +711,7 @@ var Hyperlapse = function(container, params) {
 
 	/**
 	 * Animate through all frames in sequence
+	 * @method play
 	 * @fires Hyperlapse#onPlay
 	 */
 	this.play = function() {
@@ -695,6 +723,7 @@ var Hyperlapse = function(container, params) {
 
 	/**
 	 * Pause animation
+	 * @method pause
 	 * @fires Hyperlapse#onPause
 	 */
 	this.pause = function() {
@@ -704,6 +733,7 @@ var Hyperlapse = function(container, params) {
 
 	/**
 	 * Display next frame in sequence
+	 * @method next
 	 * @fires Hyperlapse#onFrame
 	 */
 	this.next = function() {
@@ -717,6 +747,7 @@ var Hyperlapse = function(container, params) {
 
 	/**
 	 * Display previous frame in sequence
+	 * @method prev
 	 * @fires Hyperlapse#onFrame
 	 */
 	this.prev = function() {
