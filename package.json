@@ -10,27 +10,24 @@
   "keywords": [
     "Hyperlapse"
   ],
-  "author": "TeehanLax",
+  "author": "TeehanLax - juampi92",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/juampi92/Hyperlapse.js/issues"
   },
-  "homepage": "https://github.com/juampi92/Hyperlapse.js",
+  "homepage": "https://juampi92.github.io/Hyperlapse.js",
   "devDependencies": {
-    "browserify": "^11.0.1",
     "chai": "^3.2.0",
-    "jshint": "^2.8.0",
-    "mocha": "^2.3.0",
-    "uglify-js": "^2.4.24",
-    "yuidoc-bootstrap-theme": "https://github.com/juampi92/yuidoc-bootstrap-theme/tarball/master",
-    "yuidocjs": "^0.9.0"
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.2",
+    "grunt-contrib-yuidoc": "^0.10.0",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-watchify": "^0.1.0",
+    "yuidoc-bootstrap-theme": "https://github.com/juampi92/yuidoc-bootstrap-theme/tarball/master"
   },
-  "scripts": {
-    "test": "mocha --reporter spec",
-    "doc": "yuidoc -c yuidoc.json",
-    "hint": "jshint src/",
-    "browserify": "browserify src/Hyperlapse.js -o build/hyperlapse.js",
-    "uglify": "uglifyjs -o build/hyperlapse.min.js build/hyperlapse.js",
-    "build": "npm run hint && mkdir build && npm run browserify && npm run uglify && npm run doc"
-  }
+  "scripts": {}
 }

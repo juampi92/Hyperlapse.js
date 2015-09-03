@@ -4,7 +4,7 @@ set -e # exit with nonzero exit code if anything fails
 # clear and re-create the out directory
 rm -rf gh-pages || exit 0;
 
-npm run build
+grunt build
 
 git clone --branch=gh-pages git://github.com/juampi92/Hyperlapse.js.git gh-pages
 
