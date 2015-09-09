@@ -6,7 +6,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script> 
 	<script src="js/three.min.js"></script>
 	<script src="js/GSVPano.js"></script>
-	<script src="../src/Hyperlapse.js"></script>
+	<script src="../build/hyperlapse.js"></script>
 	<script> 
 
 		function init() {
@@ -18,17 +18,20 @@
 				elevation: 50
 			});
 
-			hyperlapse.onError = function(e) {
+			console.log(hyperlapse);
+
+			hyperlapse.on('error', function(e) {
 				console.log(e);
-			};
+			});
 
-			hyperlapse.onRouteComplete = function(e) {
+			hyperlapse.on('route.complete', function(e) {
 				hyperlapse.load();
-			};
+				//console.log('Route complete!');
+			});
 
-			hyperlapse.onLoadComplete = function(e) {
+			hyperlapse.on('load.complete', function(e) {
 				hyperlapse.play();
-			};
+			});
 
 			// Google Maps API stuff here...
 			var directions_service = new google.maps.DirectionsService();
