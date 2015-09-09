@@ -8,3 +8,6 @@ env:
 before_script:
   - npm install grunt-cli -g
 script: bash ./deploy.sh
+branches:
+  only:
+    - master

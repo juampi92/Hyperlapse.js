@@ -1,28 +1,28 @@
 #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-# clear and re-create the out directory
-rm -rf gh-pages || exit 0;
-
+# Build command
 grunt build
 
+# clear and clone our gh-pages branch
+rm -rf gh-pages || exit 0;
 git clone --branch=gh-pages git://github.com/juampi92/Hyperlapse.js.git gh-pages
 
+# Take everything built that you want to add to gh-pages
 cp -r build/ gh-pages/
 cp -r docs/ gh-pages/
 
-# go to the out directory and create a *new* Git repo
+# Go to the branch
 cd gh-pages
 
 # inside this git repo we'll pretend to be a new user
 git config user.name "Travis CI"
 git config user.email "juampi92@gmail.com"
 
+# Add changes (based on the replacement done earlier)
 git add .
-git commit -m "Deploy to GitHub Pages"
+git commit -m "Deploy to GitHub Pages" # It'd be good to add a deploy version to the commit message
 
-# Force push from the current repo's master branch to the remote
-# repo's gh-pages branch. (All previous history on the gh-pages branch
-# will be lost, since we are overwriting it.) We redirect any output to
-# /dev/null to hide any sensitive credential data that might otherwise be exposed.
+# Force push gh-pages branch (current one) with the changes made from the build
+# We redirect any output to /dev/null to hide any sensitive credential data that might otherwise be exposed.
 git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" > /dev/null 2>&1
